@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Laws</title>
+    <style>
+        * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f3f4f6;
+    scroll-behavior: smooth
+    ;
+}
+
+/* Navigation Bar */
+nav {
+    width: 100%;
+    height: 80px;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.9);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-size: 2.5em;
+    letter-spacing: 3px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff3366, #ff0055);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+    
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    position: relative;
+    transition: color 0.4s;
+    overflow: hidden;
+}
+.menu a:hover {
+    color: indianred;
+}
+.menu a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-bottom: 2px solid indianred;
+    transition: width 0.4s ease;
+}
+.menu a:hover::before {
+    width: 90%;
+}
+
+/* Register Button */
+.register a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    background-color: indianred;
+    border-radius: 8px;
+    transition: 0.4s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(45deg, #ff3366, #ff0055);
+}
+.register a:hover {
+    background: transparent;
+    border: 2px solid indianred;
+    color: indianred;
+}
+
+/* Section Styles */
+section {
+    min-height: 100vh;
+    padding: 100px 20px 20px;
+    scroll-margin-top: 80px;
+}
+
+/* Home Section */
+#home {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('/api/placeholder/1200/800') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding: 50px;
+    overflow: hidden;
+    background-color: black;
+}
+
+.h-txt {
+    max-width: 650px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    animation: fadeUp 1s ease;
+}
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.h-txt span {
+    color: #ff3366;
+    font-size: 1.2em;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: 600;
+}
+
+.h-txt h1 {
+    background: linear-gradient(45deg, #fff, #ff3366);
+    font-size: 4em;
+    margin: 20px 0;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 30px rgba(255, 51, 102, 0.3);
+}
+
+.h-txt a {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff3366, #ff0055);
+    text-decoration: none;
+    background-color: indianred;
+    color: white;
+    padding: 12px 25px;
+    letter-spacing: 5px;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+.h-txt a:hover {
+    background: transparent;
+    border: 2px solid indianred;
+    color: indianred;
+}
+
+/* Law Section */
+.law-section {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 30px;
+   
+    padding: 20px;
+    border-radius: 5px;
+    
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.1)
+}
+.law-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(255, 51, 102, 0.2);
+}
+
+.law-section h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.law-details {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.law-section:target .law-details {
+    display: block;
+}
+
+/* Details and Summary */
+details {
+    background: rgba(255, 255, 255, 0.03);
+    margin: 10px 0;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+summary {
+    background: linear-gradient(45deg, #ff3366, #ff0055);
+    cursor: pointer;
+    padding: 10px;
+    background: indianred;
+    color: white;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+summary:hover {
+    background: #cd5c5c;
+}
+
+/* Form Styles */
+.form-container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-submit-btn {
+    background: indianred;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.form-submit-btn:hover {
+    background: #cd5c5c;
+}
+@media (max-width: 768px) {
+    .h-txt h1 {
+        font-size: 3em;
+    }
+    
+    nav {
+        padding: 0 20px;
+    }
+    
+    .menu a {
+        padding: 8px 15px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Indian Laws</div>
+        <div class="menu">
+            <a href="#home">Home</a>
+            <a href="#sections">Sections</a>
+            <a href="#laws">Laws</a>
+            <a href="#about">About</a>
+        </div>
+        <div class="register">
+            <a href="#feedback">Feedback</a>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="h-txt">
+            <span>Explore</span>
+            <h1>Indian Laws</h1>
+            <br>
+            <a href="#laws">Discover Laws</a>
+        </div>
+    </section>
+
+    <section id="sections">
+        <h1>Indian Penal Code Sections</h1>
+        
+        <details>
+            <summary>Chapter I: Introduction (Sections 1 to 5)</summary>
+            <div class="section-content">
+                <h3>Section 1 - Title and extent of operation</h3>
+                <p>IPC applies to the entire country (originally except J&K, but after 2019, it covers J&K too).</p>
+                <p>
+            
+                    1.  Section 1  –  Title and extent of operation : IPC applies to the entire country (originally except J&K, but after 2019, it covers J&K too).<br>
+                    2.  Section 2  –  Punishment of offenses committed within India : Anyone who commits an offense within India is liable to be punished under this code.<br>
+                    3.  Section 3  –  Punishment of offenses committed outside India : Indian citizens who commit offenses outside India can be prosecuted in India.<br>
+                    4.  Section 4  –  Extension of the Code to extra-territorial offenses : Crimes committed on Indian ships or aircraft or by Indian citizens outside the country can be tried in India.<br>
+                    5.  Section 5  –  Certain laws not to be affected by this Act : The IPC does not override specific or local laws.<br>
+                    </p> 
+                <!-- More content -->
+            </div>
+        </details>
+        <details>
+            <summary>Chapter II: General Explanations</summary>
+            <div class="section-content">
+                <h3>Section 1 - Title and extent of operation</h3>
+                <p>IPC applies to the entire country (originally except J&K, but after 2019, it covers J&K too).</p>
+                  <p>6.  Section 6  –  Definitions to be understood subject to exceptions : Laws mentioned in IPC should be understood along with stated exceptions.<br>
+                            7.  Section 7  –  Sense of expression once explained : If an expression is defined in IPC, the same meaning applies throughout the Code.<br>
+                            8.  Section 8  –  Gender : Masculine words include the feminine unless stated otherwise.<br>
+                            9.  Section 9  –  Number : Singular terms include the plural, and vice versa.<br>
+                            10.  Section 10  –  Man and Woman : Defines “man” as a male human being and “woman” as a female human being.<br>
+                            11.  Section 11  – *Person : The term “person” includes any company or association.<br>
+                            12.  Section 12  –  Public : Defines what constitutes "public."<br>
+                            13.  Section 13  –  Queen : Refers to the British monarch (historically relevant but not applicable today).<br>
+                            14.  Section 14  –  Servant of Government : Defines government servants under the Code.<br>
+                            15.  Section 15  –  Court of Justice : Defines courts that have legal authority to adjudicate matters.<br>
+                            16.  Section 16  –  Definition of Government of India : Refers to the Central Government.<br>
+                            17.  Section 17  –  Government of India : Definition.<br>
+                            18.  Section 18  –  India : The territorial extent of India.<br>
+                            19.  Section 19  –  Judge : Defines who can be considered a judge in the eyes of the law.<br>
+                            20.  Section 20  –  Court of Justice : Extends to any judge or body empowered to adjudicate disputes.<br>
+                            21.  Section 21  –  Public Servant : Describes who is considered a public servant.<br>
+                            22.  Section 22  –  Movable property : Defines movable property for legal purposes.<br>
+                            23.  Section 23  –  Wrongful gain : Gaining something wrongfully or by unlawful means.<br>
+                            24.  Section 24  –  Dishonestly : Acts done with the intention to cause wrongful gain or loss.<br>
+                            25.  Section 25  –  Fraudulently : Acts done with intent to defraud.<br>
+                            26.  Section 26  –  Reason to believe : Having sufficient cause to believe something is true.<br>
+                            27.  Section 27  –  Property in possession of wife, clerk, or servant : Deals with property held by these persons on behalf of someone else.<br>
+                            28.  Section 28  –  Counterfeit : Making false copies of any currency, property, etc.<br>
+                            29.  Section 29  –  Document : Defines what constitutes a document.<br>
+                            30.  Section 30  –  Valuable security : Any document that creates a legal right or liability.<br>
+                            31.  Section 31  –  A will : Refers to the legal declaration of the intentions of a deceased person.<br>
+                            32.  Section 32  –  Words referring to acts include illegal omissions : Even failing to act when legally obligated to do so can be a crime.<br>
+                            33.  Section 33  –  Act and omission : Defines these as performing a deed or failing to act.<br>
+                            34.  Section 34  –  Acts done by several persons with common intention : When several people act together with a shared intent, all are held responsible.<br>
+                            35.  Section 35  –  When such an act is criminal by reason of its being done with a criminal knowledge or intention : Deals with actions done with criminal intent.<br>
+                            36.  Section 36  –  Effect caused partly by act and partly by omission : Both an action and failure to act can lead to a crime.<br>
+                            37.  Section 37  –  Co-operation by doing one of several acts constituting an offense : Crimes committed by more than one person through cooperation.<br>
+                            38.  Section 38  –  Persons concerned in criminal act may be guilty of different offenses : Multiple people involved in a crime may be charged with different offenses.<br>
+                            39.  Section 39  –  Voluntarily : Acts committed intentionally without any coercion.<br>
+                            40.  Section 40  –  Offense : Defines what constitutes an offense under the IPC.<br>
+                            41.  Section 41  –  Special law : Any law apart from the IPC that applies to specific cases.<br>
+                            42.  Section 42  –  Local law : Laws applicable to a specific area or region.<br>
+                            43.  Section 43  –  Illegal and legally bound to do : Acts that are unlawful and obligations that must be followed.<br>
+                            44.  Section 44  –  Injury : Any harm caused illegally to a person, property, or reputation.<br>
+                            45.  Section 45  –  Life : Refers to the life of a human being.<br>
+                            46.  Section 46  –  Death : The permanent cessation of life.<br>
+                            47.  Section 47  –  Animal : Defines what constitutes an animal.<br>
+                            48.  Section 48  –  Vessel : Includes any ship or boat or other watercraft.<br>
+                            49.  Section 49  –  Year and month : Defines these as per the calendar.<br>
+                            50.  Section 50  –  Section : Refers to the divisions within the IPC.<br>
+                            51.  Section 51  –  Oath : A solemn declaration made under the law.<br>
+                            52.  Section 52  –  Good faith : Acts done with an honest belief.<br>
+                            52A.  Section 52A  –  Harboring of persons in certain cases : Refers to harboring persons involved in criminal activity.<br></p>
+                    </div>
+                <!-- More content -->
+            </div>
+        </details>
+        <details>
+            <summary>Chapter III: Of Punishments</summary>
+            <div class="section-content">
+                <h3>Section 1 - Title and extent of operation</h3>
+                <p>IPC applies to the entire country (originally except J&K, but after 2019, it covers J&K too).</p>
+                <p> 53.  Section 53  –  Punishments : Lists various types of punishments under IPC (e.g., death, imprisonment, fines).<br>
+                    54.  Section 54  –  Commutation of sentence of death : The government can reduce a death sentence to any other punishment.<br>
+                    55.  Section 55  –  Commutation of sentence of imprisonment for life : Life imprisonment may be commuted to a term of imprisonment by the government.<br>
+                    56.  Section 56  –  Sentence of Europeans and Americans to penal servitude  (no longer applicable).<br>
+                    57.  Section 57  –  Fractions of terms of punishment : How fractions of terms of imprisonment are calculated.<br>
+                    58.  Section 58  –  Offenders sentenced to transportation (Repealed) .<br>
+                    59.  Section 59  –  Transportation instead of imprisonment (Repealed) .<br>
+                    60.  Section 60  –  Sentence may be wholly or partly rigorous or simple : Imprisonment can be either rigorous (hard labor) or simple.<br>
+                    
+                    63.  Section 63  –  Amount of fine : There is no upper limit unless specifically stated.<br>
+                    64.  Section 64  –  Sentence of imprisonment for non-payment of fine : If a fine is not paid, the convict may face imprisonment.<br>
+                    65.  Section 65  –  Limit to imprisonment for non-payment of fine : The imprisonment term cannot exceed the term for which the person is sentenced.<br>
+                    66.  Section 66  –  Description of imprisonment for non-payment of fine : The nature of imprisonment for failure to pay fines.<br>
+                    67.  Section 67  –  Imprisonment for non-payment of fine when the offense is punishable with fine only .<br>
+                    68.  Section 68  –  Imprisonment to terminate on payment of fine : A convict can be released if they pay the fine during imprisonment.<br>
+                    69.  Section 69  –  Termination of imprisonment on payment of proportional part of fine .<br>
+                    70.  Section 70  –  Fine leviable within six years, or during imprisonment .<br>
+                    71.  Section 71  –  Limit of punishment of offense made up of several offenses : Cannot be punished more than once for the same offense.<br>
+                    72.  Section 72  –  Punishment of person guilty of one of several offenses, the judgment stating that it is doubtful of which .<br>
+                    73.  Section 73  –  Solitary confinement : Can be imposed for certain offenses.<br>
+                    74.  Section 74  –  Limit of solitary confinement : Cannot exceed 14 days at a time with a minimum break between terms.<br>
+                    75.  Section 75  –  Enhanced punishment for certain offenses under Chapter XII or Chapter XVII after previous conviction .<br></p>  
+                <!-- More content -->
+            </div>
+        </details>
+        <details>
+            <summary>Chapter IV: General Exceptions</summary>
+            <div class="section-content">
+                <h3>Section 1 - Title and extent of operation</h3>
+                <p>IPC applies to the entire country (originally except J&K, but after 2019, it covers J&K too).</p>
+                <p>76.  Section 76  –  Act done by a person bound or by mistake of fact believing himself bound by law .<br>
+                    77.  Section 77  –  Act of Judge when acting judicially .<br>
+                    78.  Section 78  –  Act done pursuant to the judgment or order of a Court .<br>
+                    79.  Section 79  –  Act done by a person justified, or by mistake of fact believing himself justified, by law .<br>
+                    80.  Section 80  –  Accident in doing a lawful act .<br>
+                    81.  Section 81  –  Act likely to cause harm, but done without criminal intent, and to prevent other harm .<br>
+                    82.  Section 82  –  Act of a child under seven years of age .<br>
+                    83.  Section 83  –  Act of a child above seven and under twelve years of age .<br>
+                    84.  Section 84  –  Act of a person of unsound mind .<br>
+                    85.  Section 85  –  Act of a person incapable of judgment by reason of intoxication caused against his will .<br>
+                    86.  Section 86  –  Offense requiring a particular intent or knowledge committed by one who is intoxicated .<br>
+                    87.  Section 87  –  Act not intended and not known to be likely to cause death or grievous hurt, done by consent .<br>
+                    88.  Section 88  –  Act not intended to cause death, done by consent in good faith for person’s benefit .<br>
+                    89.  Section 89  –  Act done in good faith for benefit of child or insane person, by or by consent of guardian .<br>
+                    90.  Section 90  –  Consent known to be given under fear or misconception .<br>
+                    91.  Section 91  –  Exclusion of acts which are offenses independently of harm caused .<br>
+                    92.  Section 92  –  Act done in good faith for benefit of a person without consent .<br>
+                    93.  Section 93  –  Communication made in good faith .<br>
+                    94.  Section 94  –  Act to which a person is compelled by threats .<br>
+                    95.  Section 95  –  Act causing slight harm .<br>
+                    96.  Section 96  –  Things done in private defense : Right to defend oneself and one’s property.<br>
+                    97.  Section 97  –  Right of private defense of the body and of property .<br>
+                    98.  Section 98  –  Right of private defense against the act of a person of unsound mind, etc. .<br>
+                    99.  Section 99  –  Acts against which there is no right of private defense .<br>
+                    100.  Section 100  –  When the right of private defense of the body extends to causing death .<br></p>
+                <!-- More content -->
+            </div>
+        </details>
+       
+
+        
+    </section>
+
+    <section id="laws">
+        <h1>Indian Laws</h1>
+        
+        <details>
+            <summary>Criminal Laws</summary>
+            <div class="section-content">
+                 <h3>Key Criminal Laws:</h3>
+                <ul>
+                    <li>Indian Penal Code (IPC): Defines offenses and punishments</li>
+                    <li>Code of Criminal Procedure (CrPC): Outlines criminal law procedures</li>
+                    <li>Evidence Act: Governs admissibility of evidence in courts</li>
+                    <li>Prevention of Corruption Act: Deals with corruption-related offenses</li>
+                    <li>Narcotic Drugs and Psychotropic Substances Act: Addresses drug-related crimes</li>
+                </ul>
+                <p>These laws ensure equal treatment under the criminal justice system for all individuals, upholding the principle of equality before the law as enshrined in the Indian Constitution.</p>
+                
+                <!-- More content -->
+
+            </div>
+        </details>
+
+        <details>
+            <summary>Civil Laws</summary>
+            <div class="section-content">
+                <h3>Key Civil Laws:</h3>
+                <ul>
+                    <li>Code of Civil Procedure: Outlines procedures for civil cases</li>
+                    <li>Indian Contract Act: Governs formation and enforcement of contracts</li>
+                    <li>Transfer of Property Act: Regulates transfer of property between parties</li>
+                    <li>Specific Relief Act: Provides remedies for enforcement of rights</li>
+                    <li>Right to Information Act: Ensures transparency in government functions</li>
+                </ul>
+                <p>These laws form the backbone of civil jurisprudence in India, ensuring fair resolution of disputes and protection of individual rights.</p>
+            </div>
+        </details>
+        <details>
+            <summary>Personal Laws</summary>
+            <div class="section-content">
+                <h3>Key Personal Laws:</h3>
+                <ul>
+                    <li>Hindu Marriage Act: Regulates marriage among Hindus</li>
+                    <li>Muslim Personal Law (Shariat) Application Act: Applies to Muslims in personal matters</li>
+                    <li>Indian Christian Marriage Act: Governs marriages of Indian Christians</li>
+                    <li>Special Marriage Act: Provides for civil marriages irrespective of religion</li>
+                    <li>Hindu Succession Act: Deals with inheritance among Hindus</li>
+                </ul>
+                <p>These laws respect the diversity of Indian society while ensuring basic rights and protections for all citizens in personal matters.</p>
+                <!-- More content -->
+            </div>
+        </details>
+        <details>
+            <summary>Constitutional Laws</summary>
+            <div class="section-content">
+                <h3>Key Constitutional Laws:</h3>
+                <ul>
+                    <li>Constitution of India: The supreme law of the land</li>
+                    <li>Fundamental Rights: Guarantees basic rights to all citizens</li>
+                    <li>Directive Principles of State Policy: Guidelines for governance</li>
+                    <li>Constitutional Amendments: Processes for modifying the Constitution</li>
+                </ul>
+                <p>These laws establish the framework for governance, protect individual rights, and ensure the democratic nature of the Indian state.</p>
+                <!-- More content -->
+            </div>
+        </details>
+        <details>
+            <summary>>Corporate Laws</summary>
+            <div class="section-content">
+                <h3>Key Corporate Laws:</h3>
+                <ul>
+                    <li>Companies Act: Regulates incorporation and management of companies</li>
+                    <li>Insolvency and Bankruptcy Code: Deals with corporate insolvency</li>
+                    <li>Competition Act: Promotes fair competition in markets</li>
+                    <li>Foreign Exchange Management Act (FEMA): Regulates foreign exchange transactions</li>
+                </ul>
+                <p>These laws ensure proper functioning of businesses, protect stakeholders, and contribute to economic growth and stability.</p>
+                <!-- More content -->
+            </div>
+        </details>
+        <details>
+            <summary>Administrative Law</summary>
+            <div class="section-content">
+                <ul>
+                    <li>Companies Act: Regulates incorporation and management of companies</li>
+                    <li>Insolvency and Bankruptcy Code: Deals with corporate insolvency</li>
+                    <li>Competition Act: Promotes fair competition in markets</li>
+                    <li>Foreign Exchange Management Act (FEMA): Regulates foreign exchange transactions</li>
+                </ul>
+                <p>These laws ensure proper functioning of businesses, protect stakeholders, and contribute to economic growth and stability.</p>
+            </div>
+            </div>
+        </details>
+        <details>
+            <summary>Case law</summary>
+            <div class="section-content">
+                <ul>
+                    <li>Companies Act: Regulates incorporation and management of companies</li>
+                    <li>Insolvency and Bankruptcy Code: Deals with corporate insolvency</li>
+                    <li>Competition Act: Promotes fair competition in markets</li>
+                    <li>Foreign Exchange Management Act (FEMA): Regulates foreign exchange transactions</li>
+                </ul>
+                <p>These laws ensure proper functioning of businesses, protect stakeholders, and contribute to economic growth and stability.</p>
+            </div>
+        </details>
+    </section>
+
+    <section id="about">
+        <h1>About Us</h1>
+        <p>Welcome to our website, your go-to source for comprehensive and accessible information on Indian laws. 
+            Our mission is to simplify complex legal concepts and provide users with accurate, up-to-date insights into the Indian legal system. 
+            Whether you're a law professional, student, or just someone seeking to understand your rights, our platform offers articles, case studies, and resources tailored to your needs. 
+            Stay informed and empowered with us as we strive to make legal knowledge easy to grasp for everyone.</p>
+        <!-- More content -->
+    </section>
+
+    <section id="feedback">
+        <h1>Feedback</h1>
+        <div class="form-container">
+            <form class="form">
+                <div class="form-group">
+                    <label for="name">Your name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Give us your Feedback</label>
+                    <textarea name="message" id="message" rows="5" required></textarea>
+                </div>
+                <button class="form-submit-btn" type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
